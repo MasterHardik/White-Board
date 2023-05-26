@@ -1,0 +1,122 @@
+body , html{
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+    outline:0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* Hiding scroll */
+    cursor: crosshair;
+    text-align: center;
+}
+
+html::-webkit-scrollbar{
+    display: none;
+}
+
+/* Hide the default appearance of color  picker input*/
+input[type="color"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    padding: 0;
+  }
+  strong{
+    font-size: 22px;
+    position: absolute;
+    left: 0;
+  }
+
+  .menu_bar{
+    height: 30px;
+    box-shadow: 0 2px 4px #0001;
+  }
+
+  /* Style the color picker */
+  input[type="color"]::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--input-color);
+  }
+
+  input[type="number"] {
+    width: 40px;
+  }
+  .clear{
+        height: 30px;
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #82f436;
+        color: #000000;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        position: absolute;
+        right: 0;
+      }
+      
+      .clear:hover {
+        background-color: #f54a4a;
+      }
+img{
+    height: 23px;
+    width: 24px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+    .menu_bar {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .strong{
+        font-size: 15px;
+    }
+    .boardTheme{
+      height: 35px;
+      width: 35px;
+      background-color: #1f1f1f;
+      cursor: pointer;
+      position: absolute;
+      border-radius: 20px;
+      color: white;
+      font-size: 15px;
+      margin-top: 10%;
+      padding: 1% 1% 0% 1%;
+      bottom: 0;
+    }
+
+  }
+
+.tool{
+    margin-right: 20%;
+}
+  
+canvas {
+    background-color: #f1f1f1;
+  }
+
+  .boardTheme{
+    height: 35px;
+    width: 35px;
+    background-color: #1f1f1f;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+    margin-top: 5%;
+    padding: 1% 1% 0% 1%;
+  }
