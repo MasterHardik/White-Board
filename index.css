@@ -120,3 +120,9 @@ canvas {
     margin-top: 5%;
     padding: 1% 1% 0% 1%;
   }
+
+#canvasDownload{
+  bottom: 0;
+  position: sticky;
+  width: auto;
+}

@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var canvas = document.getElementById("canvas");
+  var canvas = document.getElementById("canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   
     var ctx = canvas.getContext('2d');
-    var drawing = false;
+  var drawing = false;
+  
+  var canvasDownload = document.getElementById("canvasDownload");
+   
   
     // Getting changed value of color and size
     function getUpdate() {
@@ -26,44 +29,48 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   
     function Draw(e) {
-        if (!drawing) return;
-  const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const { color_name, size } = getUpdate();
-  ctx.strokeStyle = color_name;
-  ctx.lineWidth = size;
-  ctx.lineCap = "round";
-  ctx.lineTo(x, y);
-  ctx.moveTo(x, y);
-  ctx.stroke();
+      if (!drawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const { color_name, size } = getUpdate();
+      ctx.strokeStyle = color_name;
+      ctx.lineWidth = size;
+      ctx.lineCap = "round";
+      ctx.lineTo(x, y);
+      ctx.moveTo(x, y);
+      ctx.stroke();
+      const pngDataURL = canvas.toDataURL("image/png") //This will give us the image in url form
+      // console.log(pngDataURL );
+      canvasDownload.href = pngDataURL;
+
       }
       
-  // eraser = () => {
-  //   color_name = "#ffffff";
-  //       ctx.strokeStyle = color_name; 
-  //     }
-  
-    
-    var colorInput = document.getElementById('C');
-    var sizeInput = document.getElementById('S');
-    
-    colorInput.addEventListener('change', function() {
-        var update = getUpdate();
-        ctx.strokeStyle = update.color_name;
-    });
-    
-    sizeInput.addEventListener('change', function() {
-        var update = getUpdate();
-        ctx.lineWidth = update.size;
+      // eraser = () => {
+        //   color_name = "#ffffff";
+        //       ctx.strokeStyle = color_name; 
+        //     }
+        
+        
+        var colorInput = document.getElementById('C');
+        var sizeInput = document.getElementById('S');
+        
+        colorInput.addEventListener('change', function() {
+          var update = getUpdate();
+          ctx.strokeStyle = update.color_name;
+        });
+        
+        sizeInput.addEventListener('change', function() {
+          var update = getUpdate();
+          ctx.lineWidth = update.size;
+        });
+        
+        canvas.addEventListener("mousedown", startDraw);
+        canvas.addEventListener("mouseup", stopDraw);
+        canvas.addEventListener("mousemove", Draw);
       });
       
-      canvas.addEventListener("mousedown", startDraw);
-      canvas.addEventListener("mouseup", stopDraw);
-      canvas.addEventListener("mousemove", Draw);
-});
-
-
+      
 function clearAll() {
     window.location.reload(true);
 }
